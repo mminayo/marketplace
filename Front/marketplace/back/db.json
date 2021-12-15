@@ -1,0 +1,94 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "admin",
+      "password": "admin"
+    },
+    {
+      "id": 2,
+      "nombre": "user",
+      "password": "user"
+    },
+    {
+      "id": 3,
+      "nombre": "maria",
+      "password": "12345678",
+      "listaPedidos": []
+    }
+  ],
+  "articulos": [
+    {
+      "id": 1,
+      "nombre": "monitor",
+      "precio": 100,
+      "stock": 1,
+      "imagen": "https://www.powerplanetonline.com/cdnassets/xiaomi_mi_curved_gaming_monitor_34_01_l.jpg"
+    },
+    {
+      "id": 2,
+      "nombre": "rtx 4090",
+      "precio": 80000,
+      "stock": 5,
+      "imagen": "https://www.profesionalreview.com/wp-content/uploads/2021/11/nvidia-rtx-4090-1280x720.jpg"
+    },
+    {
+      "id": 3,
+      "nombre": "i12900k",
+      "precio": 800,
+      "stock": 64,
+      "imagen": "https://www.notebookcheck.org/fileadmin/Notebooks/News/_nc3/Alder_Lake_Intel_Core_i9_12900K_Benchmark.jpg"
+    },
+    {
+      "id": 4,
+      "nombre": "teclado",
+      "precio": 200,
+      "stock": 400,
+      "imagen": "https://resource.logitechg.com/w_1000,c_limit,q_auto,f_auto,dpr_auto/d_transparent.gif/content/dam/gaming/en/products/g915-tkl/g915-tkl-gallery/deu-g915-tkl-carbon-gallery-topdown.png"
+    },
+    {
+      "id": 5,
+      "nombre": "raton",
+      "precio": 70,
+      "stock": 200,
+      "imagen": "http://img.pccomponentes.com/articles/31/318990/1315-zowie-za11-b-raton-gaming-optico-3200-dpi.jpg"
+    }
+  ],
+  "pedidos": [
+    {
+      "id": 0,
+      "name": "Compra pc",
+      "fecha": "16/12/2021",
+      "price": 0,
+      "listaArticulosPedidos": [
+        {
+          "nombre": "monitor",
+          "precio": 100,
+          "stock": 1,
+          "cantidad": 2
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "owfqfq",
+      "fecha": "",
+      "price": 0,
+      "listaArticulosPedidos": [
+        {
+          "nombre": "monitor",
+          "precio": 100,
+          "stock": 1,
+          "cantidad": 1
+        },
+        {
+          "nombre": "i12900k",
+          "precio": 800,
+          "stock": 64,
+          "cantidad": 1
+        }
+      ],
+      "usuarioId": 1
+    }
+  ]
+}

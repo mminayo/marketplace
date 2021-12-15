@@ -1,0 +1,33 @@
+<app-header></app-header>
+
+<div class="container">
+  <h1 class="text-center m-2">Lista de usuarios</h1>
+
+  <button class="btn btn-success mb-4" type="button" [routerLink]="['/usuario/form']" >Crear Usuario</button>
+
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <!--th scope="col">Id</th> -->
+        <th scope="col">Nombre</th>
+        <th scope="col">Password</th>
+        <th scope="col">Editar</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let usuario of usuarios | paginate: { itemsPerPage: 3, currentPage: page }">
+        <!--<td>{{usuario.id }}</td> -->
+        <td>{{usuario.nombre}}</td>
+        <td>{{usuario.password}}</td>
+        <td> <button type="button" class="btn btn-warning" [routerLink]="['/usuario/form/',usuario.id]"> Editar </button> </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a *ngFor="let pedido of listaPedidos">{{pedido.name}}
+  </a>
+
+  <pagination-controls class="float-end m-5" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+
+
+</div>

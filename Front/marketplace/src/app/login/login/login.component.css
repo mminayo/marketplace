@@ -1,0 +1,15 @@
+.card{
+  border:none;
+  width: 500px;
+  padding: 40px;
+  position: absolute;
+  top:5vh;
+  left: 50%;
+  transform: translate(-50%,50%);
+  color: aliceblue;
+  background-color: #485461;
+  background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+
+}
+
+

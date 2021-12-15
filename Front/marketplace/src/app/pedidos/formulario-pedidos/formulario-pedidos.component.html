@@ -1,0 +1,102 @@
+
+<div class="container">
+  <div class="card-body">
+    <h1 class="card-title text-left" *ngIf="!pedido.id else ac">Crear Pedido</h1>
+
+
+    <ng-template #ac>
+      <h1 class="card-title text-center">Actualizar Pedido</h1>
+    </ng-template>
+
+    <form>
+
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label">Nombre</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" name="nombre" [(ngModel)]="pedido.name">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="precio" class="col-form-label">Fecha</label>
+        <div class="col-sm-4">
+          <input data-datepicker="" class="form-control" placeholder="dd/mm/yyyy" required [(ngModel)]="pedido.fecha">
+
+        </div>
+      </div>
+
+      <br>
+
+      <h4 class="card-title text-right">Lista Articulos añadidos</h4>
+
+      <tr *ngFor="let articuloPedido of listaArticulosPedidos">
+        <td>Nombre:{{articuloPedido.nombre}}</td>&nbsp;&nbsp;&nbsp;
+        <td>Precio:{{articuloPedido.precio | currency:'EUR' }}</td>&nbsp;&nbsp;&nbsp;
+        <td>Stock:{{articuloPedido.stock | number}}</td>&nbsp;&nbsp;&nbsp;
+        <td>{{articuloPedido.cantidad | number}}Uds.</td>&nbsp;&nbsp;&nbsp;
+        
+      </tr>
+      <br>
+
+      <h2 class="card-title text-right" *ngIf="!pedido.id else ac">Añadir Articulo al pedido</h2>
+
+      <table class="table">
+        <thead class="table-striped">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Añadir a pedido</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let articulo of articulos | filter:filterArticulo">
+
+            <td>{{articulo.nombre}}</td>
+            <td>{{articulo.precio | currency:'EUR' }}</td>
+            <td>{{articulo.stock | number}}</td>
+            <td><input type="number" class="form-control" name="cantidad" [(ngModel)]="articulo.cantidad"></td>
+            <td>
+              <button type="button" class="btn btn-primary" (click)="addToPedido(articulo)"> Añadir </button>
+            </td>
+          </tr>
+
+          <div class="container">
+            <h5>Buscar Articulo</h5>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Buscar" name="filterArticulo"
+                    [(ngModel)]="filterArticulo">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </tbody>
+      </table>
+
+
+
+      <button class="btn btn-success m-2" (click)="crearPedido()" *ngIf="!pedido.id else actualiza">Crear</button>
+
+      <button class="btn btn-dark m-2" [routerLink]="['/pedidos']">Volver</button>
+
+      <ng-template #actualiza>
+        <button class="btn btn-success m-2" (click)="actualizarPedido(pedido.id)">Actualizar</button>
+      </ng-template>
+
+
+    </form>
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>

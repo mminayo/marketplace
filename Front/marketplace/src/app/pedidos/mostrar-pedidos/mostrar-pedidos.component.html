@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="card-body">
+
+        <form>
+
+            <div class="form-group row">
+                <label for="nombre" class="col-form-label">Nombre</label>
+                <div class="col-sm-4">
+                   {{pedido.name}}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="precio" class="col-form-label">Fecha</label>
+                <div class="col-sm-4">
+                    {{pedido.fecha | date:'short'}}
+                </div>
+            </div>
+
+            <br>
+
+            <h3 class="card-title text-right">Lista Articulos</h3>
+
+            <tr *ngFor="let articuloPedido of pedido.listaArticulosPedidos">
+                <td>Nombre:{{articuloPedido.nombre}}</td>&nbsp;&nbsp;&nbsp;
+                <td>Precio:{{articuloPedido.precio | currency:'EUR' }}</td>&nbsp;&nbsp;&nbsp;
+                <td>Stock:{{articuloPedido.stock | number}}</td>&nbsp;&nbsp;&nbsp;
+                <td>{{articuloPedido.cantidad | number}}Uds.</td>&nbsp;&nbsp;&nbsp;
+
+            </tr>
+            <br>
+
+            <button class="btn btn-dark m-2" [routerLink]="['/pedidos']">Volver</button>
+
+
+        </form>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>

@@ -1,0 +1,69 @@
+
+<div class="container">
+  <div class="card-body">
+    <h1 class="card-title text-center" *ngIf="!articulo.id else ac">Crear Articulo</h1>
+
+    <ng-template #ac>
+      <h1 class="card-title text-center">Actualizar Articulo</h1>
+    </ng-template>
+
+    <form [formGroup]="formulario" >
+
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label">Nombre</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" name="nombre" [(ngModel)]="articulo.nombre" formControlName="nombre" [controlErrorsTpl]="nombreError">
+          </div>
+
+          <ng-template let-error let-text="text" #nombreError >
+            <div *ngIf="error?.minlength" >
+              <i class="text-danger">No cumple con los caracteres minimos que son ({{error?.minlength.requiredLength}}), ingresaste solo: {{error?.minlength.actualLength}} </i>
+            </div>
+          </ng-template>
+      </div>
+
+      <div class="form-group row">
+        <label for="precio" class="col-form-label">Precio</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control"  name="precio" [(ngModel)]="articulo.precio" formControlName="precio" [controlErrorsTpl]="precioError">
+          </div>
+
+          <ng-template let-error let-text="text" #precioError >
+            <div *ngIf="error?.articulo.precio < 20" >
+              <i class="text-danger ">No cumple el precio minimo que es: 20 </i>
+            </div>
+          </ng-template>
+      </div>
+
+      <div class="form-group row">
+        <label for="stock" class="col-form-label">Stock</label>
+          <div class="col-sm-6">
+            <input type="number" class="form-control" name="stock" [(ngModel)]="articulo.stock" formControlName="stock" [controlErrorsTpl]="stockError">
+          </div>
+
+          <ng-template let-error let-text="text" #stockError >
+            <div *ngIf="articulo.stock < 5" >
+              <i class="text-danger ">No cumple el precio minimo que es: 5 </i>
+            </div>
+          </ng-template>
+      </div>
+
+      <div class="form-group row">
+        <label for="imagen" class="col-form-label">Imagen</label>
+          <div class="col-sm-6">
+            <input type="string" class="form-control" name="imagen" [(ngModel)]="articulo.imagen" formControlName="imagen">
+          </div>
+      </div>
+
+      <button class="btn btn-success" (click)="crear()" [disabled]="formulario.invalid" *ngIf="!articulo.id else actualiza" > Crear</button>
+
+      <button class="btn btn-dark m-2"  [routerLink]="['/articulos']" >Volver</button>
+
+      <ng-template #actualiza >
+       <button class="btn btn-success" (click)="actualizar()" [disabled]="formulario.invalid">Actualizar</button>
+      </ng-template>
+    </form>
+
+  </div>
+</div>
+

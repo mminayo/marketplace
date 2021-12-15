@@ -1,0 +1,38 @@
+
+<div class="container">
+  <div class="card-body">
+    <h1 class="card-title text-center"> Articulo</h1>
+    <form>
+
+      <div class="form-group row">
+        <label for="nombre" class="col-form-label">Nombre</label>
+          <div class="col-sm-6">
+            <input value="disabled" disabled type="text" class="form-control" name="nombre" [(ngModel)]="articulo.nombre">
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="precio" class="col-form-label">Precio</label>
+          <div class="col-sm-6">
+            <input value="disabled" disabled type="number" class="form-control" name="precio" [(ngModel)]="articulo.precio">
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="stock" class="col-form-label">Stock</label>
+          <div class="col-sm-6">
+            <input value="disabled" disabled  type="number" class="form-control" name="stock" [(ngModel)]="articulo.stock">
+          </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="imagen" class="col-form-label">Imagen</label>
+          <div class="col-sm-6">
+            <input value="disabled" disabled type="string" class="form-control" name="imagen" [(ngModel)]="articulo.imagen">
+          </div>
+      </div>
+      <button class="btn btn-dark m-2" [routerLink]="['/articulos']" >Volver</button>
+    </form>
+  </div>
+</div>
+

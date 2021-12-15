@@ -1,0 +1,7 @@
+@SpringBootTest
+class MarketplaceSpringbootApplicationTests {
+
+	
+
+
+}

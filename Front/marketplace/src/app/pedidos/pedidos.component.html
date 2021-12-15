@@ -1,0 +1,62 @@
+<app-header></app-header>
+<div class="container">
+  <h1 class="text-center m-2">Lista de Pedidos</h1>
+
+  <button class="btn btn-success mb-4" type="button" [routerLink]="['/pedidos/form']">Crear Pedido</button>
+
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Lista Articulos</th>
+        <th scope="col">Editar y mostrar</th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pedido of pedidos | filterPedidos:filterPedidos" >
+
+        <td>{{pedido.id}}</td>
+        <td>{{pedido.name}}</td>
+        <td>{{pedido.fecha}}</td>
+        <td>{{precioTotal(pedido) | currency:'EUR'}}</td>
+        <td>
+          <button mat-button [matMenuTriggerFor]="menu">Articulos</button>
+          <mat-menu  #menu="matMenu">
+              <button *ngFor="let articulo of pedido.listaArticulosPedidos"mat-menu-item>-{{articulo.nombre}} ({{articulo.cantidad}} Uds.) {{articulo.precio | currency:'EUR'}}</button>
+          </mat-menu>
+        </td>
+        <td>
+          <button type="button" class="btn btn-warning m-2" [routerLink]="['/pedidos/form/',pedido.id]">Editar</button>
+          <button type="button" class="btn btn-danger m-2" (click)="borrarPedido(pedido.id)">Borrar </button>
+          <button type="button" class="btn btn-success m-2" [routerLink]="['/pedidos/mostrar/',pedido.id]">Mostrar </button>
+        </td>
+      </tr>
+
+
+      <div class="container">
+        <h5>Buscar Pedido por Nombre</h5>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Buscar por Nombre" name="buscarPedidoporNombre"
+                [(ngModel)]="filterPedidos">
+              <button type="button" class="btn btn-success m-2">Buscar pedido</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </tbody>
+  </table>
+
+</div>
+
+<br>
+<br>

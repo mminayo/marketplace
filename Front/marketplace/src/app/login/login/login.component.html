@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Login</h1>
+          <form [formGroup]="formulario" (ngSubmit)="login()">
+            <div class="mb-3">
+              <label for="nombre" class="form-label mb-2">Nombre</label>
+              <input type="nombre" class="form-control" id="nombre"  formControlName="nombre">
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label mb-2">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+
+          </form>
+
+          <div class="m-4">
+            <p *ngIf="encontrado==true" class="bg-success">El usuario existe</p>
+          <p *ngIf="encontrado===false" class=" bg-danger">El usuario no existe</p>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
